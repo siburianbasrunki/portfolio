@@ -32,7 +32,7 @@ const About = () => {
             <article className='about__card'>
               <CgWebsite className='about__icon'/>
               <h5>Proyek Website</h5>
-              <small>10+ Website</small>
+              <small>5 Website</small>
             </article>
           </div>
           <p>

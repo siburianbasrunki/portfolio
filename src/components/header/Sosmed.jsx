@@ -4,9 +4,9 @@ import {BsLinkedin ,BsInstagram,BsGithub} from 'react-icons/bs'
 const Sosmed = () => {
   return (
     <div className='header-socials'>
-        <a href='https://linkedin.com' target="_blank"><BsLinkedin/></a>
-        <a href='https://github.com' target="_blank"><BsInstagram/></a>
-        <a href='https://instagram.com' target="_blank"><BsGithub/></a>
+        <a href='https://www.linkedin.com/in/basrunki-siburian-ba6b03210/' target="_blank"><BsLinkedin/></a>
+        <a href='https://www.instagram.com/basrunki_/' target="_blank"><BsInstagram/></a>
+        <a href='https://github.com/siburianbasrunki' target="_blank"><BsGithub/></a>
     </div>
   )
 }
