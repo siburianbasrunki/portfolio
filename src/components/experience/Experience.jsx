@@ -46,7 +46,7 @@ const Experience = () => {
               <DiReact className='experience__details-icons'/>
               <div>
                 <h4>React JS </h4>
-                <small className='text-light'>Beginner</small>
+                <small className='text-light'>Intermidiated</small>
               </div>
             </article>
           </div>
