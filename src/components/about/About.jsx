@@ -22,7 +22,7 @@ const About = () => {
             <article className='about__card'>
               <FaAward className='about__icon'/>
               <h5>Pengalaman</h5>
-              <small>+- 1 Tahun</small>
+              <small>1 Tahun</small>
             </article>
             <article className='about__card'>
               <TbFileCertificate className='about__icon'/>
