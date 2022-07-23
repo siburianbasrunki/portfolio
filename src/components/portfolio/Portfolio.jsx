@@ -3,33 +3,39 @@ import "./portfolio.css"
 import Img1 from "../../assets/pmk.png"
 import Img2 from "../../assets/todolist.png"
 import Img3 from "../../assets/danautoba.png"
-
+import Img4 from "../../assets/portofolio.png"
 // https://github.com/siburianbasrunki/laketoba
 
 const data = [
 
   {
     id : 1,
+    image : Img4,
+    title : "Portofolio With React JS",
+    github : "https://github.com/siburianbasrunki/portfolio",
+    demo : "basrunkiportfolio.vercel.app",
+  },
+  {
+    id : 2,
     image : Img1,
     title : "Website Organisasi PMK ITERA",
     github : "https://github.com/siburianbasrunki/PMKWEB",
     demo : "",
   },
   {
-    id : 2,
+    id : 3, 
     image : Img2,
-    title : "To Do List Javascript",
+    title : "To Do App JS",
     github : "https://github.com/siburianbasrunki/TodoApps",
     demo : "https://siburianbasrunki.github.io/TodoApps/",
   },
   {
-    id : 3, 
-    image : Img3,
+    id : 4,
+    image: Img3,
     title : "Danau Toba",
     github : "https://github.com/siburianbasrunki/laketoba",
     demo : "https://siburianbasrunki.github.io/laketoba/",
   }
-
 ]
 
 
