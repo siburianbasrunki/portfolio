@@ -10,7 +10,24 @@
 }
 
 :root {
-    --color-bg : #1f1f38;
+    --color-bg : #1C6758;
+    --color-bg-variant : #3D8361;
+    --color-primary : #D6CDA4;
+    --color-primaty-variant : rgb(214, 205, 164 ,0.4);
+    --color-white :#fff;
+    --color-light : rgba(255, 255, 255 , 0.6);
+
+    --transition : all 400 ease;
+
+    --container-width-lg : 75% ;
+    --container-width-md : 86% ;
+    --container-width-sm : 90% ;
+
+
+}
+
+/* 
+ --color-bg : #1f1f38;
     --color-bg-variant : #2c2c6c;
     --color-primary : #4db5ff;
     --color-primaty-variant : rgba(77, 181, 255, 0.4);
@@ -22,8 +39,7 @@
     --container-width-lg : 75% ;
     --container-width-md : 86% ;
     --container-width-sm : 90% ;
-}
-
+ */
 html {
     scroll-behavior: smooth;
 }
