@@ -5,19 +5,24 @@ import {FaAward} from 'react-icons/fa'
 import {TbFileCertificate} from 'react-icons/tb'
 import {CgWebsite} from 'react-icons/cg'
 import {RiEmotionLine} from 'react-icons/ri'
+import {Zoom,Fade} from "react-reveal"
 const About = () => {
   return (
     <section id='about'>
+      <Fade top>
       <h5>Get To Know</h5>
       <h2>About Me</h2>
-
+      </Fade>
       <div className='container about__container'>
         <div className='about__me'>
+          <Zoom left delay={500}>
           <div className='about__me-image'>
             <img src={Babout} alt="photoabout_me" />
           </div>
+          </Zoom>
         </div>
         <div className='about__content'>
+          <Zoom bottom cascade delay={500}>
           <div className='about__cards'>
             <article className='about__card'>
               <FaAward className='about__icon'/>
@@ -35,10 +40,13 @@ const About = () => {
               <small>5 Website</small>
             </article>
           </div>
+          </Zoom>
+          <Fade bottom delay={1000}> 
           <p>
             Haii <RiEmotionLine /> saya Basrunki Siburian,saya sekarang mahasiswa di sebuah Institut negeri di Indonesia jurusan Teknik Informatika.Saya sekarang mempelajari Website terkhusus bagian Front End Developer.  
           </p>
           <a href="#contact" className='btn btn-primary'>Let's Talk</a>
+          </Fade>
         </div>
       </div>
     </section>

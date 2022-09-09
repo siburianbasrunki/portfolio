@@ -5,7 +5,7 @@ import Img2 from "../../assets/todolist.png"
 import Img3 from "../../assets/danautoba.png"
 import Img4 from "../../assets/portofolio.png"
 // https://github.com/siburianbasrunki/laketoba
-
+import {Fade,Bounce} from "react-reveal"
 const data = [
 
   {
@@ -43,9 +43,11 @@ const data = [
 const Portfolio = () => {
   return (
     <section id='portfolio'>
+      <Fade>
       <h5>My Recent Work</h5>
       <h2>Portfolio</h2>
-
+      </Fade>
+      <Bounce top cascade delay={2000}>
       <div className="container portfolio__container">
         {
           data.map(({id,image,title,github,demo}) => {
@@ -65,6 +67,7 @@ const Portfolio = () => {
           })
         }
       </div>
+      </Bounce>
     </section>
   )
 }

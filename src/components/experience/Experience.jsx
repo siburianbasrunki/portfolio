@@ -4,15 +4,18 @@ import {TbBrandCss3,TbBrandJavascript} from 'react-icons/tb'
 import {AiFillHtml5} from "react-icons/ai"
 import {SiBootstrap} from 'react-icons/si'
 import {DiReact} from 'react-icons/di'
+import {Zoom,Fade} from "react-reveal"
 const Experience = () => {
   return (
     <section id='experience'>
+      <Fade bottom>
       <h5>What Skills I have</h5>
       <h2>My Experience</h2>
-
+      </Fade>
       <div className="container experience__container">
         <div className="experience__frontend">
           <h3>Frontend Development</h3>
+          <Zoom left cascade>
           <div className="experience__content">
             <article className='experience__details'>
               <AiFillHtml5 className='experience__details-icons'/>
@@ -50,6 +53,7 @@ const Experience = () => {
               </div>
             </article>
           </div>
+          </Zoom>
         </div> 
         {/* <div className="experience__backend">
         <div className="experience__frontend">

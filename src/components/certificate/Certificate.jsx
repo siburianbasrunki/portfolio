@@ -4,7 +4,7 @@ import "./certificate.css"
 import Dicoding from '../../assets/instansi/dicoding.png'
 import Dts from '../../assets/instansi/dts.jpg'
 import Progate from '../../assets/instansi/progate.jpg'
-
+import BuildWithAngga from '../../assets/instansi/bwa.svg'
 // import sertifikat 
 import Jwd from '../../assets/sertifikat/JWD.png'
 import FronnendD from '../../assets/sertifikat/FrontendD.png'
@@ -14,6 +14,7 @@ import Htmlcss from '../../assets/sertifikat/HTMLCSS.png'
 import Js from '../../assets/sertifikat/JavaScript.png'
 import Reactjs from '../../assets/sertifikat/ReactJS.png'
 import Nodejs from '../../assets/sertifikat/NodeJs.png'
+import HtoR from '../../assets/sertifikat/HTML-ReactJs.png'
 // import Swiper core and required modules  
 import { Pagination} from 'swiper';
 
@@ -22,6 +23,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
+
+// import React-Reveal 
+import Fade from 'react-reveal/Fade';
 
 
 const Sertifikat = [
@@ -65,15 +69,22 @@ const Sertifikat = [
     jsertifikat : "Pengembangan WEB dengan Node.Js (Progate)",
     sertifikat : Nodejs,
   },
-  
+  {
+    logo: BuildWithAngga,
+    jsertifikat : "Convert HTML to React JS FrameWork",
+    sertifikat : HtoR,
+  }
 ]
 
 const Certificate = () => {
   return (
     <section id='sertifikat'>
+      <Fade top >
       <h5>Review my Certificate</h5>
       <h2>Certificate</h2>
-
+      </Fade>
+      <Fade buttom>
+      <Fade buttom delay={1000}>
       <Swiper className="container sertifikats__container" 
       modules={[ Pagination]}
       spaceBetween={40}
@@ -95,6 +106,8 @@ const Certificate = () => {
         })
         }
       </Swiper>
+      </Fade>
+      </Fade>
     </section>
   )
 }
