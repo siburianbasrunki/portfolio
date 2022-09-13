@@ -44,6 +44,7 @@ const Contact = () => {
           </article>
           </div>
         {/*  */}
+        
         <form ref={form} onSubmit={sendEmail}>
           <input type="text" name='name' placeholder='nama lengkap' required />
           <input type="email" name='email' placeholder='email' required />

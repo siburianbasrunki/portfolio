@@ -47,7 +47,7 @@ const Portfolio = () => {
       <h5>My Recent Work</h5>
       <h2>Portfolio</h2>
       </Fade>
-      <Bounce top cascade delay={2000}>
+      <Bounce top cascade >
       <div className="container portfolio__container">
         {
           data.map(({id,image,title,github,demo}) => {
