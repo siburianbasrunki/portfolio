@@ -1,9 +1,10 @@
 import React from 'react'
 import "./portfolio.css"
 import Img1 from "../../assets/pmk.png"
-import Img2 from "../../assets/todolist.png"
-import Img3 from "../../assets/danautoba.png"
-import Img4 from "../../assets/portofolio.png"
+import Img2 from "../../assets/2.png"
+import Img3 from "../../assets/3.png"
+import Img4 from "../../assets/1.png"
+import Img5 from "../../assets/4.png"
 // https://github.com/siburianbasrunki/laketoba
 import {Fade,Bounce} from "react-reveal"
 const data = [
@@ -27,14 +28,21 @@ const data = [
     image : Img2,
     title : "To Do App JS",
     github : "https://github.com/siburianbasrunki/TodoApps",
-    demo : "https://siburianbasrunki.github.io/TodoApps/",
+    demo : "https://karejoapps.vercel.app/",
   },
   {
     id : 4,
     image: Img3,
     title : "Danau Toba",
     github : "https://github.com/siburianbasrunki/laketoba",
-    demo : "https://siburianbasrunki.github.io/laketoba/",
+    demo : "https://laketoba.vercel.app/",
+  },
+  {
+    id : 5,
+    image: Img5,
+    title : "Website Desa Sukamaju",
+    github : "https://github.com/siburianbasrunki/DesaSukamaju",
+    demo : "https://sukamajuwaysulan.vercel.app/",
   }
 ]
 
