@@ -68,9 +68,9 @@ h1 {
     font-size: 2.5rem;
 }
 
-section {
-    margin-top: 8rem;
-}
+/* section {
+    margin-top: 2rem;
+} */
 
 section > h2 , section > h5 {
     text-align: center;
@@ -107,7 +107,7 @@ a:hover {
 }
 
 .btn:hover{
-    background:var(--color-white);
+    background:var(--color-white); 
     color: var(--color-bg);
     border-color: transparent;
 }

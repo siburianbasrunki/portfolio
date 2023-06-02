@@ -1,23 +1,57 @@
-import React from 'react'
-import {AiOutlineHome,AiOutlineUser} from 'react-icons/ai'
-import {BiBook,BiMessageRoundedDetail} from 'react-icons/bi'
-import {TbFileCertificate} from 'react-icons/tb'
-import Rotate from "react-reveal"
-import "./nav.css"
-import { useState } from 'react'
+import React from "react";
+import { AiOutlineHome, AiOutlineUser, AiOutlineProject } from "react-icons/ai";
+import { BiBook, BiMessageRoundedDetail } from "react-icons/bi";
+import { TbFileCertificate } from "react-icons/tb";
+import { Link, useLocation } from "react-router-dom";
+import Rotate from "react-reveal";
+import "./nav.css";
+
 const Nav = () => {
-  const [activeNav,setActiveNav] = useState('#')
+  const location = useLocation();
+
   return (
     <Rotate bottom left cascade>
-    <nav>
-      <a href='#' onClick={() => setActiveNav('#')}className={activeNav === '#' ? 'active' : ''}><AiOutlineHome/></a>
-      <a href='#about' onClick={() => setActiveNav('#about')} className={activeNav === '#about' ? 'active' : ''}><AiOutlineUser/></a>
-      <a href='#experience' onClick={() => setActiveNav('#experience')} className={activeNav === '#experience' ? 'active' : ''}><BiBook/></a>
-      <a href='#sertifikat' onClick={() => setActiveNav('#sertifikat')} className={activeNav === '#sertifikat' ? 'active' : ''}><TbFileCertificate/></a>
-      <a href='#contact' onClick={() => setActiveNav('#contact')} className={activeNav === '#contact' ? 'active' : ''}><BiMessageRoundedDetail/></a>
-    </nav>
-    </Rotate>
-  )
-}
+      <nav>
+        <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+          <AiOutlineHome />
+        </Link>
+        <Link
+          to="/about"
+          className={location.pathname === "/about" ? "active" : ""}
+        >
+          <AiOutlineUser />
+        </Link>
 
-export default Nav
+        <Link
+          to="/experience"
+          className={location.pathname === "/experience" ? "active" : ""}
+        >
+          <BiBook />
+        </Link>
+
+        <Link
+          to="/certificate"
+          className={location.pathname === "/certificate" ? "active" : ""}
+        >
+          <TbFileCertificate />
+        </Link>
+
+        <Link
+          to="/portfolio"
+          className={location.pathname === "/portfolio" ? "active" : ""}
+        >
+          <AiOutlineProject />
+        </Link>
+
+        <Link
+          to="/contact"
+          className={location.pathname === "/contact" ? "active" : ""}
+        >
+          <BiMessageRoundedDetail />
+        </Link>
+      </nav>
+    </Rotate>
+  );
+};
+
+export default Nav;
