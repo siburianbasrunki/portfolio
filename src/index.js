@@ -6,7 +6,7 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import About from "./components/about/About";
 import Experience from "./components/experience/Experience";
-import Certificate from "./components/certificate/Certificate";
+// import Certificate from "./components/certificate/Certificate";
 import Portfolio from "./components/portfolio/Portfolio";
 import Contact from "./components/contact/Contact";
 
@@ -23,10 +23,10 @@ const router = createBrowserRouter([
     path: "/experience",
     element: <Experience />,
   },
-  {
-    path: "/certificate",
-    element: <Certificate />,
-  },
+  // {
+  //   path: "/certificate",
+  //   element: <Certificate />,
+  // },
   {
     path: "/portfolio",
     element: <Portfolio />,

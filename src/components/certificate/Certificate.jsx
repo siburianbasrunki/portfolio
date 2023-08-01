@@ -17,12 +17,12 @@ import Nodejs from "../../assets/sertifikat/NodeJs.png";
 import HtoR from "../../assets/sertifikat/HTML-ReactJs.png";
 // import Swiper core and required modules
 import { Pagination } from "swiper";
-
-import { Swiper, SwiperSlide } from "swiper/react";
+import Swiper from "swiper";
+import { SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
+import "swiper/swiper.min.css";
+import "swiper/components/pagination/pagination.min.css";
 
 // import React-Reveal
 import Fade from "react-reveal/Fade";

@@ -1,9 +1,10 @@
 import React from "react";
 import "./experience.css";
 import { TbBrandCss3, TbBrandJavascript } from "react-icons/tb";
-import { AiFillHtml5 } from "react-icons/ai";
+import { AiFillHtml5, AiFillCloud } from "react-icons/ai";
 import { SiBootstrap } from "react-icons/si";
-import { DiReact } from "react-icons/di";
+import { DiReact,DiPhp } from "react-icons/di";
+import {FaLaravel} from "react-icons/fa"
 import { Zoom, Fade } from "react-reveal";
 import Nav from "../nav/Nav";
 const Experience = () => {
@@ -17,7 +18,7 @@ const Experience = () => {
         </Fade>
         <div className="container experience__container">
           <div className="experience__frontend">
-            <h3>Frontend Development</h3>
+            <h3>Web Development</h3>
             <Zoom left cascade>
               <div className="experience__content">
                 <article className="experience__details">
@@ -51,8 +52,29 @@ const Experience = () => {
                 <article className="experience__details">
                   <DiReact className="experience__details-icons" />
                   <div>
-                    <h4>React JS </h4>
+                    <h4>React / Next JS </h4>
                     <small className="text-light">Intermidiated</small>
+                  </div>
+                </article>
+                <article className="experience__details">
+                  <DiPhp className="experience__details-icons" />
+                  <div>
+                    <h4>PHP </h4>
+                    <small className="text-light">Intermidiated</small>
+                  </div>
+                </article>
+                <article className="experience__details">
+                  <AiFillCloud className="experience__details-icons" />
+                  <div>
+                    <h4>Cloud Computing</h4>
+                    <small className="text-light">Intermidiated</small>
+                  </div>
+                </article>
+                <article className="experience__details">
+                  <FaLaravel className="experience__details-icons" />
+                  <div>
+                    <h4>Laravel </h4>
+                    <small className="text-light">Beginner</small>
                   </div>
                 </article>
               </div>

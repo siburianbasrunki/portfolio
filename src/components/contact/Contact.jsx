@@ -37,7 +37,8 @@ const Contact = () => {
               <a
                 href="mailto:barunkisiburian@gmail.com"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
+
               >
                 Send a message
               </a>
@@ -49,7 +50,8 @@ const Contact = () => {
               <a
                 href="https://m.me/basrunki.siburian"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
+
               >
                 Send a message
               </a>
@@ -61,7 +63,7 @@ const Contact = () => {
               <a
                 href="https://wa.me/6282277611415"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 Send a message
               </a>

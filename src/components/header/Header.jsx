@@ -2,7 +2,7 @@ import React from "react";
 import CTA from "./CTA";
 import Sosmed from "./Sosmed";
 import "./header.css";
-import ME from "../../assets/basrunki-home2.png";
+import ME from "../../assets/basrunki.png";
 import { Fade, Zoom } from "react-reveal";
 const Header = () => {
   return (

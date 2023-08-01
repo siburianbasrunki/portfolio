@@ -1,6 +1,6 @@
 import React from "react";
 import "./about.css";
-import Babout from "../../assets/profilee.jpeg";
+import Babout from "../../assets/aboutimage.jpg";
 import { FaAward } from "react-icons/fa";
 import { TbFileCertificate } from "react-icons/tb";
 import { CgWebsite } from "react-icons/cg";
@@ -49,7 +49,7 @@ const About = () => {
                 Haii <RiEmotionLine /> saya Basrunki Siburian,saya sekarang
                 mahasiswa di sebuah Institut negeri di Indonesia jurusan Teknik
                 Informatika.Saya sekarang mempelajari Website terkhusus bagian
-                Front End Developer.
+                Front End Developer.Saya juga alumni dari Bangkit Academy Batch 1 2023 Dengan Learning Path Cloud Computing,Program dari gabungan Google, Tokopedia, Gojek, & Traveloka.
               </p>
               <a href="#contact" className="btn btn-primary">
                 Let's Talk
