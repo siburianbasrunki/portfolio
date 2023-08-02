@@ -23,7 +23,7 @@
   padding: 2rem;
   border-radius: 2rem;
   user-select: none;
-  margin: 0 1rem; /* Tambahkan margin kanan untuk memberi jarak antar sertifikat */
+  margin: 2; /* Tambahkan margin kanan untuk memberi jarak antar sertifikat */
 }
 .slider-arrow {
   position: absolute;
