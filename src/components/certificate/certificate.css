@@ -4,10 +4,10 @@
   overflow: hidden;
 }
 .sertifikats-slider {
-    display: flex;
-    /* Tambahkan transisi agar slider berfungsi dengan baik */
-    transition: transform 0.3s ease-in-out;
-  }
+  display: flex;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
 .instansi__avatar {
   width: 4rem;
   aspect-ratio: 1/1;
@@ -61,16 +61,27 @@
 /* media queries  (medium devices)*/
 @media screen and (max-width: 1024px) {
   .container.sertifikats__container {
-    width: 80%;
+    width: 95%;
+  }
+  .sertifikats-slider {
+    width: 100%;
+  }
+  .sertifikat {
+    flex: 0 0 50%;
+    margin-right: 0;
   }
 }
 
 /* media queries  (small devices)*/
 @media screen and (max-width: 600px) {
   .container.sertifikats__container {
-    width: var(--container-width-sm);
+    width: 95%;
   }
-  .gambar__sertifikat {
-    width: var(--container-width-sm);
+  .sertifikats-slider {
+    width: 100%;
+  }
+  .sertifikat {
+    flex: 0 0 100%;
+    margin-right: 0;
   }
 }
