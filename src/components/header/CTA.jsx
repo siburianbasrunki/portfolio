@@ -1,6 +1,6 @@
 import React from 'react'
 import Fade from "react-reveal"
-import CV from "../../assets/Basrunki Siburian CV.png"
+import CV from "../../assets/CV_BasrunkiSiburian.pdf"
 const CTA = () => {
   return (
     <div className='cta'>

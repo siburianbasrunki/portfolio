@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useRef, useState ,useEffect} from "react";
 import "./certificate.css";
-// import logo instansi
+import Fade from "react-reveal/Fade";
+import Nav from "../nav/Nav";
+
+// Import images
 import Dicoding from "../../assets/instansi/dicoding.png";
 import Dts from "../../assets/instansi/dts.jpg";
 import Progate from "../../assets/instansi/progate.jpg";
 import BuildWithAngga from "../../assets/instansi/bwa.svg";
-// import sertifikat
 import Jwd from "../../assets/sertifikat/JWD.png";
 import FronnendD from "../../assets/sertifikat/FrontendD.png";
 import DasarWebD from "../../assets/sertifikat/DasarWebD.png";
@@ -15,20 +17,9 @@ import Js from "../../assets/sertifikat/JavaScript.png";
 import Reactjs from "../../assets/sertifikat/ReactJS.png";
 import Nodejs from "../../assets/sertifikat/NodeJs.png";
 import HtoR from "../../assets/sertifikat/HTML-ReactJs.png";
-// import Swiper core and required modules
-import { Pagination } from "swiper";
-import Swiper from "swiper";
-import { SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/swiper.min.css";
-import "swiper/components/pagination/pagination.min.css";
-
-// import React-Reveal
-import Fade from "react-reveal/Fade";
-import Nav from "../nav/Nav";
 
 const Sertifikat = [
+  
   {
     logo: Dts,
     jsertifikat: "Junior Web Developer (Digital Talent Scholarship)",
@@ -74,9 +65,23 @@ const Sertifikat = [
     jsertifikat: "Convert HTML to React JS FrameWork",
     sertifikat: HtoR,
   },
+
 ];
 
 const Certificate = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const sliderRef = useRef(null);
+
+  const nextSlide = () => {
+    const newIndex = (currentSlide + 1) % Sertifikat.length;
+    setCurrentSlide(newIndex);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 3000); 
+    return () => clearInterval(interval);
+  }, [currentSlide]);
+
   return (
     <>
       <Nav />
@@ -85,30 +90,29 @@ const Certificate = () => {
           <h5>Review my Certificate</h5>
           <h2>Certificate</h2>
         </Fade>
-        <Fade buttom>
-          <Fade buttom delay={1000}>
-            <Swiper
-              className="container sertifikats__container"
-              modules={[Pagination]}
-              spaceBetween={40}
-              slidesPerView={1}
-              pagination={{ clickable: true }}
+        <Fade bottom>
+          <div className="container sertifikats__container">
+            <div
+              className="sertifikats-slider"
+              ref={sliderRef}
+              style={{
+                transform: `translateX(-${currentSlide * 100}%)`,
+                transition: "transform 0.5s ease-in-out", 
+              }}
             >
-              {Sertifikat.map(({ logo, jsertifikat, sertifikat }, index) => {
-                return (
-                  <SwiperSlide key={index} className="sertifikat">
-                    <div className="instansi__avatar">
-                      <img src={logo} />
-                    </div>
-                    <h5 className="nama__instansi">{jsertifikat}</h5>
-                    <small className="gambar__sertifikat">
-                      <img src={sertifikat} alt="abc" />
-                    </small>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </Fade>
+              {Sertifikat.map(({ logo, jsertifikat, sertifikat }, index) => (
+                <div key={index} className="sertifikat">
+                  <div className="instansi__avatar">
+                    <img src={logo} alt={`instansi-logo-${index}`} />
+                  </div>
+                  <h5 className="nama__instansi">{jsertifikat}</h5>
+                  <small className="gambar__sertifikat">
+                    <img src={sertifikat} alt={`sertifikat-${index}`} />
+                  </small>
+                </div>
+              ))}
+            </div>
+          </div>
         </Fade>
       </section>
     </>
