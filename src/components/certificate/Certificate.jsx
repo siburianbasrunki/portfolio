@@ -1,13 +1,23 @@
-import React, { useRef, useState ,useEffect} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./certificate.css";
 import Fade from "react-reveal/Fade";
 import Nav from "../nav/Nav";
-
-// Import images
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+// Import images instansi
 import Dicoding from "../../assets/instansi/dicoding.png";
 import Dts from "../../assets/instansi/dts.jpg";
 import Progate from "../../assets/instansi/progate.jpg";
 import BuildWithAngga from "../../assets/instansi/bwa.svg";
+import Bangkit from "../../assets/instansi/bangkit.jpg";
+import Coursera from "../../assets/instansi/Coursera.jpg";
+// import images sertifikat
+import BangkitAc from "../../assets/sertifikat/bangkit.jpg";
+import Coursera1 from "../../assets/sertifikat/admingoogle.png";
+import Coursera2 from "../../assets/sertifikat/bit and byte coursera.png";
+import ApkBE from "../../assets/sertifikat/aplikasi back-end.png";
+import Cloud from "../../assets/sertifikat/cloudengineer.jpg";
+import PemJS from "../../assets/sertifikat/sertif dasar javascript.png";
+import pengsoft from "../../assets/sertifikat/sertifpengsoft.png";
 import Jwd from "../../assets/sertifikat/JWD.png";
 import FronnendD from "../../assets/sertifikat/FrontendD.png";
 import DasarWebD from "../../assets/sertifikat/DasarWebD.png";
@@ -19,12 +29,50 @@ import Nodejs from "../../assets/sertifikat/NodeJs.png";
 import HtoR from "../../assets/sertifikat/HTML-ReactJs.png";
 
 const Sertifikat = [
-  
+  {
+    logo: Bangkit,
+    jsertifikat: "Bangkit Batch 1 2023 ( Bangkit Academy )",
+    sertifikat: BangkitAc,
+  },
   {
     logo: Dts,
     jsertifikat: "Junior Web Developer (Digital Talent Scholarship)",
     sertifikat: Jwd,
   },
+  {
+    logo: Coursera,
+    jsertifikat:
+      "System Administrator and IT Infrastructur Service ( Coursera )",
+    sertifikat: Coursera1,
+  },
+  {
+    logo: Coursera,
+    jsertifikat: "The Bits and Bytes of Computer Networking ( Coursera )",
+    sertifikat: Coursera2,
+  },
+  {
+    logo: Dicoding,
+    jsertifikat: "Menjadi Google Cloud Engineer ( Dicoding )",
+    sertifikat: Cloud,
+  },
+  {
+    logo: Dicoding,
+    jsertifikat: "Belajar Dasar Pemrograman JavaScript (Dicoding)",
+    sertifikat: PemJS,
+  },
+  {
+    logo: Dicoding,
+    jsertifikat:
+      "Memulai Dasar Pemrograman untuk Menjadi Pengembang Software (Dicoding) ",
+    sertifikat: pengsoft,
+  },
+  {
+    logo: Dicoding,
+    jsertifikat:
+      "Belajar Membuat Aplikasi Back-End untuk Pemula dengan Google Cloud ( Dicoding )",
+    sertifikat: ApkBE,
+  },
+
   {
     logo: Dicoding,
     jsertifikat: "Membuat Front-End Web (Dicoding)",
@@ -65,7 +113,6 @@ const Sertifikat = [
     jsertifikat: "Convert HTML to React JS FrameWork",
     sertifikat: HtoR,
   },
-
 ];
 
 const Certificate = () => {
@@ -77,8 +124,13 @@ const Certificate = () => {
     setCurrentSlide(newIndex);
   };
 
+  const prevSlide = () => {
+    const newIndex = (currentSlide - 1 + Sertifikat.length) % Sertifikat.length;
+    setCurrentSlide(newIndex);
+  };
+
   useEffect(() => {
-    const interval = setInterval(nextSlide, 3000); 
+    const interval = setInterval(nextSlide, 4000);
     return () => clearInterval(interval);
   }, [currentSlide]);
 
@@ -97,7 +149,7 @@ const Certificate = () => {
               ref={sliderRef}
               style={{
                 transform: `translateX(-${currentSlide * 100}%)`,
-                transition: "transform 0.5s ease-in-out", 
+                transition: "transform 0.5s ease-in-out",
               }}
             >
               {Sertifikat.map(({ logo, jsertifikat, sertifikat }, index) => (
@@ -112,6 +164,12 @@ const Certificate = () => {
                 </div>
               ))}
             </div>
+            <button className="slider-arrow left" onClick={prevSlide}>
+              <FaArrowLeft />
+            </button>
+            <button className="slider-arrow right" onClick={nextSlide}>
+              <FaArrowRight />
+            </button>
           </div>
         </Fade>
       </section>
