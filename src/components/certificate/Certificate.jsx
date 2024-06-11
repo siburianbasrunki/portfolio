@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./certificate.css";
-import Fade from "react-reveal/Fade";
 import Nav from "../nav/Nav";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 // Import images instansi
 import Dicoding from "../../assets/instansi/dicoding.png";
 import Dts from "../../assets/instansi/dts.jpg";
@@ -72,7 +72,6 @@ const Sertifikat = [
       "Belajar Membuat Aplikasi Back-End untuk Pemula dengan Google Cloud ( Dicoding )",
     sertifikat: ApkBE,
   },
-
   {
     logo: Dicoding,
     jsertifikat: "Membuat Front-End Web (Dicoding)",
@@ -138,40 +137,54 @@ const Certificate = () => {
     <>
       <Nav />
       <section id="sertifikat">
-        <Fade top>
-          <h5>Review my Certificate</h5>
-          <h2>Certificate</h2>
-        </Fade>
-        <Fade bottom>
-          <div className="container sertifikats__container">
-            <div
-              className="sertifikats-slider"
-              ref={sliderRef}
-              style={{
-                transform: `translateX(-${currentSlide * 100}%)`,
-                transition: "transform 0.5s ease-in-out",
-              }}
-            >
-              {Sertifikat.map(({ logo, jsertifikat, sertifikat }, index) => (
-                <div key={index} className="sertifikat">
-                  <div className="instansi__avatar">
-                    <img src={logo} alt={`instansi-logo-${index}`} />
-                  </div>
-                  <h5 className="nama__instansi">{jsertifikat}</h5>
-                  <small className="gambar__sertifikat">
-                    <img src={sertifikat} alt={`sertifikat-${index}`} />
-                  </small>
+        <motion.h5
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Review my Certificate
+        </motion.h5>
+        <motion.h2
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          Certificate
+        </motion.h2>
+        <div className="container sertifikats__container">
+          <motion.div
+            className="sertifikats-slider"
+            ref={sliderRef}
+            style={{
+              transform: `translateX(-${currentSlide * 100}%)`,
+              transition: "transform 0.5s ease-in-out",
+            }}
+          >
+            {Sertifikat.map(({ logo, jsertifikat, sertifikat }, index) => (
+              <motion.div
+                key={index}
+                className="sertifikat"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <div className="instansi__avatar">
+                  <img src={logo} alt={`instansi-logo-${index}`} />
                 </div>
-              ))}
-            </div>
-            <button className="slider-arrow left" onClick={prevSlide}>
-              <FaArrowLeft />
-            </button>
-            <button className="slider-arrow right" onClick={nextSlide}>
-              <FaArrowRight />
-            </button>
-          </div>
-        </Fade>
+                <h5 className="nama__instansi">{jsertifikat}</h5>
+                <small className="gambar__sertifikat">
+                  <img src={sertifikat} alt={`sertifikat-${index}`} />
+                </small>
+              </motion.div>
+            ))}
+          </motion.div>
+          <button className="slider-arrow left" onClick={prevSlide}>
+            <FaArrowLeft />
+          </button>
+          <button className="slider-arrow right" onClick={nextSlide}>
+            <FaArrowRight />
+          </button>
+        </div>
       </section>
     </>
   );

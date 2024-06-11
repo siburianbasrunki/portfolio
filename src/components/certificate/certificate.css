@@ -17,13 +17,13 @@
   border: 0.4rem solid var(--color-primaty-variant);
 }
 .sertifikat {
-  flex: 0 0 40%; /* Tambahkan properti flex untuk mengatur lebar masing-masing sertifikat dalam slider */
+  flex: 0 0 40%;
   background: var(--color-bg-variant);
   text-align: center;
   padding: 2rem;
   border-radius: 2rem;
   user-select: none;
-  margin: 2; /* Tambahkan margin kanan untuk memberi jarak antar sertifikat */
+  margin-right: 20px;
 }
 .slider-arrow {
   position: absolute;

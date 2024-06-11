@@ -5,60 +5,92 @@ import { FaAward } from "react-icons/fa";
 import { TbFileCertificate } from "react-icons/tb";
 import { CgWebsite } from "react-icons/cg";
 import { RiEmotionLine } from "react-icons/ri";
-import { Zoom, Fade } from "react-reveal";
 import Nav from "../nav/Nav";
+import { motion } from "framer-motion";
+
 const About = () => {
   return (
     <>
-    <Nav/>
+      <Nav />
       <section id="about">
-        <Fade top>
-          <h5>Get To Know</h5>
-          <h2>About Me</h2>
-        </Fade>
+        <motion.h5
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Get To Know
+        </motion.h5>
+        <motion.h2
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          About Me
+        </motion.h2>
         <div className="container about__container">
-          <div className="about__me">
-            <Zoom left delay={500}>
-              <div className="about__me-image">
-                <img src={Babout} alt="photoabout_me" />
-              </div>
-            </Zoom>
-          </div>
-          <div className="about__content">
-            <Zoom bottom cascade delay={500}>
-              <div className="about__cards">
-                <article className="about__card">
-                  <FaAward className="about__icon" />
-                  <h5>Pengalaman</h5>
-                  <small>1 Tahun</small>
-                </article>
-                <article className="about__card">
-                  <TbFileCertificate className="about__icon" />
-                  <h5>Sertifikat</h5>
-                  <small>Junior Web Developer</small>
-                </article>
-                <article className="about__card">
-                  <CgWebsite className="about__icon" />
-                  <h5>Proyek Website</h5>
-                  <small>5 Website</small>
-                </article>
-              </div>
-            </Zoom>
-            <Fade bottom delay={1000}>
-              <p>
-                Haii <RiEmotionLine /> saya Basrunki Siburian,saya sekarang
-                mahasiswa di sebuah Institut negeri di Indonesia jurusan Teknik
-                Informatika.Saya sekarang mempelajari Website terkhusus bagian
-                Front End Developer.Saya juga alumni dari Bangkit Academy Batch 1 2023 Dengan Learning Path Cloud Computing,Program dari gabungan Google, Tokopedia, Gojek, & Traveloka.
-              </p>
-              <a href="#contact" className="btn btn-primary">
-                Let's Talk
-              </a>
-            </Fade>
-          </div>
+          <motion.div
+            className="about__me"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="about__me-image">
+              <img src={Babout} alt="photoabout_me" />
+            </div>
+          </motion.div>
+          <motion.div
+            className="about__content"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="about__cards">
+              <motion.article
+                className="about__card"
+                whileHover={{ scale: 1.1 }}
+              >
+                <FaAward className="about__icon" />
+                <h5>Pengalaman</h5>
+                <small>1 Tahun</small>
+              </motion.article>
+              <motion.article
+                className="about__card"
+                whileHover={{ scale: 1.1 }}
+              >
+                <TbFileCertificate className="about__icon" />
+                <h5>Sertifikat</h5>
+                <small>Junior Web Developer</small>
+              </motion.article>
+              <motion.article
+                className="about__card"
+                whileHover={{ scale: 1.1 }}
+              >
+                <CgWebsite className="about__icon" />
+                <h5>Proyek Website</h5>
+                <small>5 Website</small>
+              </motion.article>
+            </div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.9 }}
+            >
+              Haii <RiEmotionLine /> saya Basrunki Siburian, saya alumni
+              mahasiswa di sebuah Institut negeri di Indonesia jurusan Teknik
+              Informatika. Saya adalah Front Ende Engineer di salah satu Start Up. Saya juga alumni dari Bangkit Academy Batch 1
+              2023 Dengan Learning Path Cloud Computing, Program dari gabungan
+              Google, Tokopedia, Gojek, & Traveloka.
+            </motion.p>
+            {/* <motion.a
+              href="#contact"
+              className="btn btn-primary"
+              whileHover={{ scale: 1.1 }}
+            >
+              Let's Talk
+            </motion.a> */}
+          </motion.div>
         </div>
       </section>
-
     </>
   );
 };

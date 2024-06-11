@@ -8,7 +8,8 @@ import Img4 from "../../assets/portfolio/1.png";
 import Img5 from "../../assets/portfolio/5.png";
 import Img6 from "../../assets/portfolio/6.png";
 import Img7 from "../../assets/portfolio/7.png";
-import { Fade, Bounce } from "react-reveal";
+import { motion } from "framer-motion";
+
 const data = [
   {
     id: 1,
@@ -66,42 +67,57 @@ const Portfolio = () => {
     <>
       <Nav />
       <section id="portfolio">
-        <Fade>
-          <h5>My Recent Work</h5>
-          <h2>Portfolio</h2>
-        </Fade>
-        <Bounce top cascade>
-          <div className="container portfolio__container">
-            {data.map(({ id, image, title, github, demo }) => {
-              return (
-                <article key={id} className="portfolio__item">
-                  <div className="porfolio__item-image">
-                    <img src={image} alt={title} />
-                  </div>
-                  <h3>{title}</h3>
-                  <div className="porfolio__item-cta">
-                    <a
-                      href={github}
-                      className="btn"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Github
-                    </a>
-                    <a
-                      href={demo}
-                      className="btn btn-primary"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Live Demo
-                    </a>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </Bounce>
+        <motion.h5
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          My Recent Work
+        </motion.h5>
+        <motion.h2
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          Portfolio
+        </motion.h2>
+        <div className="container portfolio__container">
+          {data.map(({ id, image, title, github, demo }) => {
+            return (
+              <motion.article
+                key={id}
+                className="portfolio__item"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: id * 0.2 }}
+              >
+                <div className="portfolio__item-image">
+                  <img src={image} alt={title} />
+                </div>
+                <h3>{title}</h3>
+                <div className="portfolio__item-cta">
+                  <a
+                    href={github}
+                    className="btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Github
+                  </a>
+                  <a
+                    href={demo}
+                    className="btn btn-primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Live Demo
+                  </a>
+                </div>
+              </motion.article>
+            );
+          })}
+        </div>
       </section>
     </>
   );

@@ -3,27 +3,44 @@ import CTA from "./CTA";
 import Sosmed from "./Sosmed";
 import "./header.css";
 import ME from "../../assets/basrunki.png";
-import { Fade, Zoom } from "react-reveal";
+import { motion } from "framer-motion";
+
 const Header = () => {
   return (
     <header>
       <div className="container header__container">
-        <Fade top>
-          <h5>Hello I'm</h5>
-          <h1>Basrunki Siburian</h1>
-          <h5 className="text-light">
-            Web Developer
-          </h5>
-        </Fade>
-        <Fade>
-          <CTA />
-        </Fade>
+        <motion.h5
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Hello I'm
+        </motion.h5>
+        <motion.h1
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          Basrunki Siburian
+        </motion.h1>
+        <motion.h5
+          className="text-light"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
+        >
+          Web Developer
+        </motion.h5>
+        <CTA />
         <Sosmed />
-        <Zoom>
-          <div className="me">
-            <img src={ME} alt="me" />
-          </div>
-        </Zoom>
+        <motion.div
+          className="me"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <img src={ME} alt="me" />
+        </motion.div>
       </div>
     </header>
   );

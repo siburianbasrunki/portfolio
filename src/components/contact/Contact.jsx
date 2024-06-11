@@ -1,10 +1,10 @@
-// import React from 'react'
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
 import "./contact.css";
 import { HiOutlineMail } from "react-icons/hi";
 import { SiMessenger, SiWhatsapp } from "react-icons/si";
 import Nav from "../nav/Nav";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const form = useRef();
@@ -25,11 +25,28 @@ const Contact = () => {
     <>
       <Nav />
       <section id="contact">
-        <h5>Get in touch</h5>
-        <h2>Contact</h2>
+        <motion.h5
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          Get in touch
+        </motion.h5>
+        <motion.h2
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          Contact
+        </motion.h2>
 
         <div className="container contact__container">
-          <div className="contact__options">
+          <motion.div
+            className="contact__options"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9 }}
+          >
             <article className="contact__option">
               <HiOutlineMail className="contact__option-icon" />
               <h4>Email</h4>
@@ -38,7 +55,6 @@ const Contact = () => {
                 href="mailto:barunkisiburian@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-
               >
                 Send a message
               </a>
@@ -51,7 +67,6 @@ const Contact = () => {
                 href="https://m.me/basrunki.siburian"
                 target="_blank"
                 rel="noopener noreferrer"
-
               >
                 Send a message
               </a>
@@ -68,17 +83,21 @@ const Contact = () => {
                 Send a message
               </a>
             </article>
-          </div>
-          {/*  */}
+          </motion.div>
 
-          <form ref={form} onSubmit={sendEmail}>
+          <motion.form
+            ref={form}
+            onSubmit={sendEmail}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+          >
             <input type="email" name="email" placeholder="email" required />
-            <textarea name="name" rows="7" placeholder="pesan mu"></textarea>
-            {/* <textarea name="message" rows="7" placeholder='pesan mu' required></textarea> */}
+            <textarea name="name" rows="7" placeholder="pesan mu" required></textarea>
             <button type="submit" className="btn btn-primary">
               Send
             </button>
-          </form>
+          </motion.form>
         </div>
       </section>
     </>

@@ -1,17 +1,16 @@
-import React from 'react'
-import Fade from "react-reveal"
-import CV from "../../assets/CV_BasrunkiSiburian.pdf"
+import React from "react";
+import CV from "../../assets/CV-Basrunki Siburian.pdf";
 const CTA = () => {
   return (
-    <div className='cta'>
-      <Fade left delay={5000}>
-        <a href={CV} download className='btn'>Download CV</a>
-      </Fade>
-      <Fade right delay={5000}>
-        <a href='#contact' className='btn btn-primary'>Les's Talk</a>
-      </Fade>
+    <div className="cta">
+      <a href={CV} download className="btn">
+        Download CV
+      </a>
+      <a href="/contact" className="btn btn-primary">
+        Les's Talk
+      </a>
     </div>
-  )
-}
+  );
+};
 
-export default CTA
+export default CTA;
