@@ -1,16 +1,22 @@
-import React from "react";
+
 import "./portfolio.css";
 import Nav from "../nav/Nav";
 import Img1 from "../../assets/portfolio/2.png";
-import Img2 from "../../assets/portfolio/3.png";
-import Img3 from "../../assets/portfolio/4.png";
 import Img4 from "../../assets/portfolio/1.png";
 import Img5 from "../../assets/portfolio/5.png";
 import Img6 from "../../assets/portfolio/6.png";
 import Img7 from "../../assets/portfolio/7.png";
+import Img8 from "../../assets/portfolio/8.png";
 import { motion } from "framer-motion";
 
 const data = [
+  {
+    id: 0,
+    image: Img8,
+    title: "Sistem Akomodasi dan Donasi Terumbu Karang Pulau Pawang",
+    github: "https://github.com/siburianbasrunki/SistemInformasiGeografis",
+    demo: "https://github.com/siburianbasrunki/SistemInformasiGeografis",
+  },
   {
     id: 1,
     image: Img7,
@@ -45,21 +51,7 @@ const data = [
     title: "Website Desa Sukamaju",
     github: "https://github.com/siburianbasrunki/DesaSukamaju",
     demo: "https://sukamajuwaysulan.vercel.app/",
-  },
-  {
-    id: 6,
-    image: Img3,
-    title: "Danau Toba",
-    github: "https://github.com/siburianbasrunki/laketoba",
-    demo: "https://laketoba.vercel.app/",
-  },
-  {
-    id: 8,
-    image: Img2,
-    title: "To Do App JS",
-    github: "https://github.com/siburianbasrunki/TodoApps",
-    demo: "https://karejoapps.vercel.app/",
-  },
+  }
 ];
 
 const Portfolio = () => {

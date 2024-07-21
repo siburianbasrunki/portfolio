@@ -29,7 +29,7 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9 }}
         >
-          Web Developer
+          Front End Developer
         </motion.h5>
         <CTA />
         <Sosmed />
