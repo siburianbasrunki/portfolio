@@ -113,22 +113,48 @@ const Sertifikat = [
 
 const Certificate = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [itemsPerSlide, setItemsPerSlide] = useState(3);
   const sliderRef = useRef(null);
 
+  // Calculate items per slide based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setItemsPerSlide(3);
+      } else if (width >= 768) {
+        setItemsPerSlide(2);
+      } else {
+        setItemsPerSlide(1);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const maxSlides = Math.ceil(Sertifikat.length / itemsPerSlide);
+
   const nextSlide = () => {
-    const newIndex = (currentSlide + 1) % Sertifikat.length;
+    const newIndex = (currentSlide + 1) % maxSlides;
     setCurrentSlide(newIndex);
   };
 
   const prevSlide = () => {
-    const newIndex = (currentSlide - 1 + Sertifikat.length) % Sertifikat.length;
+    const newIndex = (currentSlide - 1 + maxSlides) % maxSlides;
     setCurrentSlide(newIndex);
   };
 
   useEffect(() => {
     const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
-  }, [currentSlide]);
+  }, [currentSlide, maxSlides]);
+
+  const getCurrentSlideItems = () => {
+    const startIndex = currentSlide * itemsPerSlide;
+    return Sertifikat.slice(startIndex, startIndex + itemsPerSlide);
+  };
 
   return (
     <>
@@ -162,17 +188,10 @@ const Certificate = () => {
           </button>
           
           <div className="certificate-slider-wrapper">
-            <motion.div
-              className="certificate-slider"
-              ref={sliderRef}
-              style={{
-                transform: `translateX(-${currentSlide * 100}%)`,
-                transition: "transform 0.5s ease-in-out",
-              }}
-            >
-              {Sertifikat.map(({ logo, jsertifikat, sertifikat }, index) => (
+            <div className="certificate-grid">
+              {getCurrentSlideItems().map(({ logo, jsertifikat, sertifikat }, index) => (
                 <motion.div
-                  key={index}
+                  key={currentSlide * itemsPerSlide + index}
                   className="certificate-card"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -194,7 +213,7 @@ const Certificate = () => {
                   </div>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
           
           <button className="slider-arrow right" onClick={nextSlide}>
@@ -203,7 +222,7 @@ const Certificate = () => {
         </div>
         
         <div className="slider-dots">
-          {Sertifikat.map((_, index) => (
+          {Array.from({ length: maxSlides }, (_, index) => (
             <span 
               key={index}
               className={`dot ${index === currentSlide ? 'active' : ''}`}
