@@ -31,7 +31,7 @@ import HtoR from "../../assets/sertifikat/HTML-ReactJs.png";
 const Sertifikat = [
   {
     logo: Bangkit,
-    jsertifikat: "Bangkit Batch 1 2023 ( Bangkit Academy )",
+    jsertifikat: "Bangkit Batch 1 2023 (Bangkit Academy)",
     sertifikat: BangkitAc,
   },
   {
@@ -41,18 +41,17 @@ const Sertifikat = [
   },
   {
     logo: Coursera,
-    jsertifikat:
-      "System Administrator and IT Infrastructur Service ( Coursera )",
+    jsertifikat: "System Administrator and IT Infrastructure Service (Coursera)",
     sertifikat: Coursera1,
   },
   {
     logo: Coursera,
-    jsertifikat: "The Bits and Bytes of Computer Networking ( Coursera )",
+    jsertifikat: "The Bits and Bytes of Computer Networking (Coursera)",
     sertifikat: Coursera2,
   },
   {
     logo: Dicoding,
-    jsertifikat: "Menjadi Google Cloud Engineer ( Dicoding )",
+    jsertifikat: "Menjadi Google Cloud Engineer (Dicoding)",
     sertifikat: Cloud,
   },
   {
@@ -62,14 +61,12 @@ const Sertifikat = [
   },
   {
     logo: Dicoding,
-    jsertifikat:
-      "Memulai Dasar Pemrograman untuk Menjadi Pengembang Software (Dicoding) ",
+    jsertifikat: "Memulai Dasar Pemrograman untuk Menjadi Pengembang Software (Dicoding)",
     sertifikat: pengsoft,
   },
   {
     logo: Dicoding,
-    jsertifikat:
-      "Belajar Membuat Aplikasi Back-End untuk Pemula dengan Google Cloud ( Dicoding )",
+    jsertifikat: "Belajar Membuat Aplikasi Back-End untuk Pemula dengan Google Cloud (Dicoding)",
     sertifikat: ApkBE,
   },
   {
@@ -84,7 +81,7 @@ const Sertifikat = [
   },
   {
     logo: Progate,
-    jsertifikat: "JavaScripts (Progate)",
+    jsertifikat: "JavaScript (Progate)",
     sertifikat: Js,
   },
   {
@@ -129,61 +126,90 @@ const Certificate = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 4000);
+    const interval = setInterval(nextSlide, 5000);
     return () => clearInterval(interval);
   }, [currentSlide]);
 
   return (
     <>
       <Nav />
-      <section id="sertifikat">
-        <motion.h5
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Review my Certificate
-        </motion.h5>
-        <motion.h2
+      <section id="sertifikat" className="certificate-section">
+        <motion.div 
+          className="section-header"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          Certificate
-        </motion.h2>
-        <div className="container sertifikats__container">
-          <motion.div
-            className="sertifikats-slider"
-            ref={sliderRef}
-            style={{
-              transform: `translateX(-${currentSlide * 100}%)`,
-              transition: "transform 0.5s ease-in-out",
-            }}
+          <motion.h5
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
           >
-            {Sertifikat.map(({ logo, jsertifikat, sertifikat }, index) => (
-              <motion.div
-                key={index}
-                className="sertifikat"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
-                <div className="instansi__avatar">
-                  <img src={logo} alt={`instansi-logo-${index}`} />
-                </div>
-                <h5 className="nama__instansi">{jsertifikat}</h5>
-                <small className="gambar__sertifikat">
-                  <img src={sertifikat} alt={`sertifikat-${index}`} />
-                </small>
-              </motion.div>
-            ))}
-          </motion.div>
+            Review My Certificates
+          </motion.h5>
+          <motion.h2
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
+            My Achievements
+          </motion.h2>
+        </motion.div>
+        
+        <div className="certificate-slider-container">
           <button className="slider-arrow left" onClick={prevSlide}>
             <FaArrowLeft />
           </button>
+          
+          <div className="certificate-slider-wrapper">
+            <motion.div
+              className="certificate-slider"
+              ref={sliderRef}
+              style={{
+                transform: `translateX(-${currentSlide * 100}%)`,
+                transition: "transform 0.5s ease-in-out",
+              }}
+            >
+              {Sertifikat.map(({ logo, jsertifikat, sertifikat }, index) => (
+                <motion.div
+                  key={index}
+                  className="certificate-card"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <div className="certificate-header">
+                    <div className="institution-logo">
+                      <img src={logo} alt={`institution-logo-${index}`} />
+                    </div>
+                    <h3 className="certificate-title">{jsertifikat}</h3>
+                  </div>
+                  <div className="certificate-image-container">
+                    <img 
+                      src={sertifikat} 
+                      alt={`certificate-${index}`} 
+                      className="certificate-image"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+          
           <button className="slider-arrow right" onClick={nextSlide}>
             <FaArrowRight />
           </button>
+        </div>
+        
+        <div className="slider-dots">
+          {Sertifikat.map((_, index) => (
+            <span 
+              key={index}
+              className={`dot ${index === currentSlide ? 'active' : ''}`}
+              onClick={() => setCurrentSlide(index)}
+            />
+          ))}
         </div>
       </section>
     </>
