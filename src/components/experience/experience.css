@@ -1,94 +1,69 @@
-/* Experience Section */
+/**
+ * Halaman Experience — grid kartu skill.
+ */
+
 .experience-section {
-  padding: 5rem 0;
-  background: var(--color-bg);
-  text-align: center;
+  padding-block: var(--nb-s7);
 }
 
-.section-header {
-  margin-bottom: 3rem;
-}
-
-.section-header h5 {
-  color: var(--color-light);
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.section-header h2 {
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
-  font-size: 2rem;
-}
-
-/* Skills Container */
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: var(--nb-s4);
 }
 
-/* Skill Card */
 .skill-card {
-  background: var(--color-bg-variant);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  cursor: default;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: grid;
+  gap: var(--nb-s3);
+  justify-items: start;
+  padding: var(--nb-s4);
+
+  background: var(--nb-paper);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh);
+
+  transition:
+    transform var(--nb-dur) var(--nb-ease),
+    box-shadow var(--nb-dur) var(--nb-ease),
+    background var(--nb-dur-fast) var(--nb-ease);
 }
 
 .skill-card:hover {
-  background: var(--color-primary-variant);
-  transform: translateY(-5px);
+  background: var(--nb-yellow);
+  transform: translate(var(--nb-lift), var(--nb-lift));
+  box-shadow: var(--nb-sh-lg);
 }
 
 .skill-icon {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  color: var(--nb-ink);
+  background: var(--nb-well);
+  border: var(--nb-bd-thin) solid var(--nb-ink);
+  border-radius: var(--nb-r-sm);
+  transition: background var(--nb-dur-fast) var(--nb-ease);
+}
+
+.skill-card:hover .skill-icon {
+  background: var(--nb-paper);
 }
 
 .skill-name {
-  color: var(--color-white);
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .skills-container {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 1rem;
-    padding: 0 1.5rem;
-  }
-  
-  .skill-card {
-    padding: 1rem;
-  }
-  
-  .section-header h2 {
-    font-size: 1.8rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .skills-container {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    padding: 0 1rem;
-  }
-  
-  .skill-name {
-    font-size: 0.9rem;
-  }
-  
+@media screen and (max-width: 600px) {
   .experience-section {
-    padding: 3rem 0;
+    padding-block: var(--nb-s6);
+  }
+
+  .skills-container {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: var(--nb-s3);
   }
 }

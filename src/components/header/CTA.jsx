@@ -1,14 +1,31 @@
-import React from "react";
-import CV from "../../assets/CV_Basrunki Siburian.pdf";
-const CTA = () => {
+import { Link } from "react-router-dom";
+
+/**
+ * Tombol CV & "Let's Talk". Kalau CV belum diunggah lewat admin, tombolnya
+ * tidak dirender — lebih baik hilang daripada mengunduh tautan kosong.
+ */
+const CTA = ({ cta }) => {
+  const cvUrl = cta?.cvUrl;
+  const label = cta?.primaryLabel || "Let's Talk";
+  const url = cta?.primaryUrl || "/contact";
+  const isExternal = /^https?:\/\//.test(url);
+
   return (
     <div className="cta">
-      <a href={CV} download className="btn">
-        Download CV
-      </a>
-      <a href="/contact" className="btn btn-primary">
-        Les's Talk
-      </a>
+      {cvUrl && (
+        <a href={cvUrl} download className="btn" target="_blank" rel="noopener noreferrer">
+          Download CV
+        </a>
+      )}
+      {isExternal ? (
+        <a href={url} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          {label}
+        </a>
+      ) : (
+        <Link to={url} className="btn btn-primary">
+          {label}
+        </Link>
+      )}
     </div>
   );
 };

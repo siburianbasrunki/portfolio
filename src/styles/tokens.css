@@ -1,0 +1,137 @@
+/**
+ * Token sistem desain — implementasi dari MASTER.md.
+ *
+ * Ini satu-satunya file yang boleh berisi nilai mentah. Semua CSS lain memakai
+ * var(--nb-*). Kalau sebuah nilai perlu ditulis dua kali, berarti tokennya
+ * belum ada di sini.
+ */
+
+:root {
+  /* --- Warna ------------------------------------------------------------ */
+  --nb-paper: #fffdf5;
+  --nb-ink: #000000;
+  --nb-well: #e8e4d8;
+  --nb-muted: #5a5648;
+
+  --nb-yellow: #ffe14d;
+  --nb-pink: #ff6b9d;
+  --nb-blue: #4da3ff;
+  --nb-tosca: #00c2a8;
+  --nb-red: #ff4d4d;
+
+  /* --- Tipografi -------------------------------------------------------- */
+  --nb-font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --nb-font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --nb-fs-display: clamp(2.75rem, 9vw, 6rem);
+  --nb-fs-h2: clamp(1.6rem, 4vw, 2.4rem);
+  --nb-fs-h3: 1.05rem;
+  --nb-fs-body: 1rem;
+  --nb-fs-label: 0.7rem;
+  --nb-fs-data: 0.85rem;
+
+  --nb-track-display: -0.04em;
+  --nb-track-h2: -0.025em;
+  --nb-track-label: 0.14em;
+
+  /* --- Struktur --------------------------------------------------------- */
+  --nb-bd: 3px;
+  --nb-bd-thin: 2px;
+  --nb-r: 4px;
+  --nb-r-sm: 2px;
+  --nb-r-pill: 999px;
+
+  --nb-sh-sm: 3px 3px 0 var(--nb-ink);
+  --nb-sh: 6px 6px 0 var(--nb-ink);
+  --nb-sh-lg: 10px 10px 0 var(--nb-ink);
+  --nb-sh-none: 0 0 0 var(--nb-ink);
+
+  /* --- Jarak (basis 8px) ------------------------------------------------ */
+  --nb-s1: 4px;
+  --nb-s2: 8px;
+  --nb-s3: 12px;
+  --nb-s4: 16px;
+  --nb-s5: 24px;
+  --nb-s6: 32px;
+  --nb-s7: 48px;
+  --nb-s8: 64px;
+  --nb-s9: 96px;
+
+  /* --- Gerakan ---------------------------------------------------------- */
+  --nb-dur-fast: 80ms;
+  --nb-dur: 120ms;
+  --nb-dur-slow: 200ms;
+  --nb-ease: cubic-bezier(0.2, 0.9, 0.3, 1);
+
+  --nb-lift: -2px;
+  --nb-press: 4px;
+
+  /* --- Lebar kontainer -------------------------------------------------- */
+  --nb-container: 1140px;
+  --nb-measure: 62ch;
+
+  color-scheme: light;
+}
+
+/**
+ * Sistem ini berkomitmen pada satu dunia visual terang. Token dikunci agar
+ * preferensi gelap perangkat tidak membatalkan rasio kontras di MASTER.md.
+ * Lihat MASTER.md §1 — ini keputusan, bukan kelalaian.
+ */
+
+/* ---------------------------------------------------------------------------
+ * Kelas utilitas yang dipakai lintas halaman.
+ * Sengaja sedikit: sisanya milik CSS masing-masing komponen.
+ * ------------------------------------------------------------------------ */
+
+.nb-label {
+  font-family: var(--nb-font-mono);
+  font-size: var(--nb-fs-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--nb-track-label);
+}
+
+.nb-mono {
+  font-family: var(--nb-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/** Kartu dasar: paper + border + bayangan keras. */
+.nb-box {
+  background: var(--nb-paper);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh);
+}
+
+/**
+ * Perilaku tekan mekanis. Dipasang ke apa pun yang bisa diklik.
+ * Hanya transform dan box-shadow yang berubah — keduanya composite-only.
+ */
+.nb-press {
+  transition:
+    transform var(--nb-dur) var(--nb-ease),
+    box-shadow var(--nb-dur) var(--nb-ease);
+}
+
+.nb-press:hover {
+  transform: translate(var(--nb-lift), var(--nb-lift));
+  box-shadow: var(--nb-sh-lg);
+}
+
+.nb-press:active {
+  transform: translate(var(--nb-press), var(--nb-press));
+  box-shadow: var(--nb-sh-none);
+}
+
+/** Focus ring: biru, tebal, tidak pernah dihapus tanpa pengganti. */
+.nb-focus:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: var(--nb-bd) solid var(--nb-blue);
+  outline-offset: 3px;
+}

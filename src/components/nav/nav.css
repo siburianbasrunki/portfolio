@@ -1,33 +1,75 @@
-nav {
-    background: rgba(0, 0, 0, 0.3);
-    width: max-content;
-    display: block;
-    padding: 0.7rem 1.7rem;
-    z-index: 2;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 2rem;
-    display: flex;
-    gap: 0.8rem;
-    border-radius: 3rem;
-    backdrop-filter: blur(15px);
-}
+/**
+ * Floating icon bar — pola, posisi, dan ikon dipertahankan dari desain lama.
+ * Yang berubah hanya kulitnya (MASTER.md §6).
+ *
+ * Semua aturan di-scope ke .site-nav. Memakai selector `nav` telanjang akan
+ * ikut mengenai <nav className="admin-nav"> di sidebar CMS, karena CSS di Vite
+ * berlingkup global.
+ */
 
-nav a {
-  background: transparent;
-  padding: 0.9rem;
-  border-radius: 50%;
+.site-nav {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--nb-s5) + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  z-index: 30;
+
   display: flex;
-  color: var(--color-light);
-  font-size: 1.1rem;
+  gap: var(--nb-s1);
+  padding: var(--nb-s1);
+
+  background: var(--nb-paper);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r-pill);
+  box-shadow: var(--nb-sh);
 }
 
-nav a:hover {
-  background: rgba(0, 0, 0, 0.3);
+.site-nav a {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+
+  color: var(--nb-ink);
+  border: var(--nb-bd-thin) solid transparent;
+  border-radius: var(--nb-r-pill);
+
+  transition:
+    background var(--nb-dur) var(--nb-ease),
+    border-color var(--nb-dur) var(--nb-ease);
 }
 
-nav a.active {
-  background: var(--color-primary);
-  color: var(--color-bg);
+.site-nav a svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.site-nav a:hover {
+  background: var(--nb-well);
+  border-color: var(--nb-ink);
+}
+
+/* Halaman aktif ditandai blok kuning berbingkai, bukan perubahan warna ikon —
+   penanda bentuk lebih terbaca daripada penanda warna, dan tetap terlihat
+   untuk pengguna yang sulit membedakan warna. */
+.site-nav a.active {
+  background: var(--nb-yellow);
+  border-color: var(--nb-ink);
+}
+
+.site-nav a:focus-visible {
+  outline: var(--nb-bd-thin) solid var(--nb-blue);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 600px) {
+  .site-nav {
+    gap: 2px;
+    bottom: calc(var(--nb-s4) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .site-nav a {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }

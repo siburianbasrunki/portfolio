@@ -1,151 +1,244 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+/**
+ * Base style global. Token ada di styles/tokens.css — file ini hanya
+ * menerapkannya ke elemen dasar.
+ *
+ * Pembagian yang penting: hanya reset sejati dan dasar dokumen yang global.
+ * Skala tipografi editorial (h1 raksasa, lebar baca 62ch) dan komponen halaman
+ * di-scope ke `.site-shell`, karena CMS admin punya skalanya sendiri yang jauh
+ * lebih rapat — dan CSS di Vite berlingkup global, bukan per komponen.
+ */
+@import "./styles/tokens.css";
+
+/* --- Reset ---------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 * {
   margin: 0;
   padding: 0;
-  border: 0;
-  outline: 0;
-  box-sizing: border-box;
+}
+
+ul,
+ol {
   list-style: none;
-  text-decoration: none;
-}
-
-:root {
-  --color-bg: #000; /* Black background color */
-  --color-bg-variant: #111; /* Darker variant of the background color */
-  --color-primary: #00ff00; /* Green color */
-  --color-primaty-variant: rgba(
-    0,
-    255,
-    0,
-    0.4
-  ); /* Green color variant with transparency */
-  --color-white: #fff; /* White color */
-  --color-light: #fff;
-  --transition: all 400 ease;
-
-  --container-width-lg: 75%;
-  --container-width-md: 86%;
-  --container-width-sm: 90%;
-}
-
-/* 
- --color-bg : #1f1f38;
-    --color-bg-variant : #2c2c6c;
-    --color-primary : #4db5ff;
-    --color-primaty-variant : rgba(77, 181, 255, 0.4);
-    --color-white :#fff;
-    --color-light : rgba(255, 255, 255 , 0.6);
-
-    --transition : all 400 ease;
-
-    --container-width-lg : 75% ;
-    --container-width-md : 86% ;
-    --container-width-sm : 90% ;
- */
-html {
-  scroll-behavior: smooth;
-}
-::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  background: var(--color-bg);
-  color: var(--color-white);
-  line-height: 1.7;
-  background-image: url(../src/assets/bg-texture.png);
-}
-/* GENERAL STYLES */
-.container {
-  width: var(--container-width-lg);
-  margin: 0 auto;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-weight: 500;
-}
-
-h1 {
-  font-size: 2.5rem;
-}
-
-/* section {
-    margin-top: 2rem;
-} */
-
-section > h2,
-section > h5 {
-  text-align: center;
-  color: var(--color-light);
-}
-
-section > h2 {
-  color: var(--color-primary);
-  margin-bottom: 3rem;
-}
-
-.text-light {
-  color: var(--color-light);
 }
 
 a {
-  color: var(--color-primary);
-  transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
 }
 
-a:hover {
-  color: var(--color-white);
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
-.btn {
-  width: max-content;
-  display: inline-block;
-  color: var(--color-primary);
-  padding: 0.75rem 1.2rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  border: 1px solid var(--color-primary);
-  transition: var(--transition);
+body {
+  background: var(--nb-paper);
+  color: var(--nb-ink);
+  font-family: var(--nb-font-display);
+  font-size: var(--nb-fs-body);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-.btn:hover {
-  background: var(--color-white);
-  color: var(--color-bg);
-  border-color: transparent;
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: var(--color-bg);
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
 img {
-  display: block;
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Scrollbar sebelumnya disembunyikan total. Itu menghilangkan satu-satunya
+   petunjuk posisi halaman — sekarang ditampilkan, digayakan senada sistem. */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--nb-well);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nb-ink);
+  border: 3px solid var(--nb-well);
+  border-radius: var(--nb-r-pill);
+}
+
+/* --- Cangkang halaman publik ---------------------------------------------- */
+
+.site-shell {
+  /* Ruang agar konten terakhir tidak tertutup floating nav. */
+  padding-bottom: calc(var(--nb-s9) + env(safe-area-inset-bottom, 0px));
+}
+
+.site-shell h1,
+.site-shell h2,
+.site-shell h3,
+.site-shell h4,
+.site-shell h5,
+.site-shell h6 {
+  font-weight: 700;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.site-shell h1 {
+  font-size: var(--nb-fs-display);
+  letter-spacing: var(--nb-track-display);
+  line-height: 0.92;
+}
+
+.site-shell h2 {
+  font-size: var(--nb-fs-h2);
+  letter-spacing: var(--nb-track-h2);
+  line-height: 1.05;
+}
+
+.site-shell h3 {
+  font-size: var(--nb-fs-h3);
+  letter-spacing: -0.01em;
+}
+
+.site-shell p {
+  max-width: var(--nb-measure);
+}
+
+/* --- Layout --------------------------------------------------------------- */
+
+.container {
   width: 100%;
-  object-fit: cover;
+  max-width: var(--nb-container);
+  margin-inline: auto;
+  padding-inline: clamp(var(--nb-s4), 4vw, var(--nb-s6));
 }
 
-/* media queries  (medium devices)*/
-@media screen and (max-width: 1024px) {
-  .container {
-    width: var(--container-width-md);
-  }
-  section {
-    margin-top: 6rem;
-  }
+/* Header tiap halaman: label mono kecil lalu judul besar. */
+.section-header {
+  display: grid;
+  gap: var(--nb-s2);
+  margin-bottom: var(--nb-s7);
 }
 
-/* media queries  (small devices)*/
-@media screen and (max-width: 600px) {
-  .container {
-    width: var(--container-width-sm);
-  }
-  section {
-    margin-top: 2rem;
+.section-header h5 {
+  font-family: var(--nb-font-mono);
+  font-size: var(--nb-fs-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--nb-track-label);
+  color: var(--nb-muted);
+}
+
+.section-header h2 {
+  /* Judul section diberi garis bawah tebal agar terbaca sebagai penanda
+     struktur, bukan sekadar teks besar. */
+  padding-bottom: var(--nb-s3);
+  border-bottom: var(--nb-bd) solid var(--nb-ink);
+}
+
+.section-subtitle {
+  color: var(--nb-muted);
+  font-size: 0.95rem;
+}
+
+.text-light {
+  color: var(--nb-muted);
+}
+
+/* --- Tombol --------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nb-s2);
+  width: max-content;
+  padding: var(--nb-s3) var(--nb-s4);
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: var(--nb-paper);
+  color: var(--nb-ink);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh);
+  cursor: pointer;
+  transition:
+    transform var(--nb-dur) var(--nb-ease),
+    box-shadow var(--nb-dur) var(--nb-ease),
+    background var(--nb-dur-fast) var(--nb-ease);
+}
+
+.btn:hover {
+  transform: translate(var(--nb-lift), var(--nb-lift));
+  box-shadow: var(--nb-sh-lg);
+}
+
+.btn:active {
+  transform: translate(var(--nb-press), var(--nb-press));
+  box-shadow: var(--nb-sh-none);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  background: var(--nb-well);
+  color: var(--nb-muted);
+  box-shadow: var(--nb-sh-sm);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--nb-yellow);
+}
+
+/* --- Badge ---------------------------------------------------------------- */
+
+.nb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nb-s1);
+  font-family: var(--nb-font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px var(--nb-s2);
+  background: var(--nb-paper);
+  border: var(--nb-bd-thin) solid var(--nb-ink);
+  border-radius: var(--nb-r-sm);
+}
+
+/* --- Aksesibilitas -------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

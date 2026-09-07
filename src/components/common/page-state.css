@@ -1,0 +1,57 @@
+/**
+ * State memuat & gagal. Dipakai halaman publik dan sebagai fallback Suspense
+ * saat chunk CMS diunduh.
+ */
+
+.page-state {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: var(--nb-s4);
+  min-height: 60vh;
+  padding: var(--nb-s6);
+  text-align: center;
+}
+
+/* Spinner berupa kotak berputar, bukan cincin — sistem ini tidak punya
+   lengkungan halus. */
+.page-state__spinner {
+  width: 2rem;
+  height: 2rem;
+  background: var(--nb-yellow);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r-sm);
+  animation: page-state-spin 900ms var(--nb-ease) infinite;
+}
+
+@keyframes page-state-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(90deg); }
+}
+
+.page-state__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: var(--nb-s2) var(--nb-s4);
+  background: var(--nb-red);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh-sm);
+}
+
+.page-state__text {
+  font-family: var(--nb-font-mono);
+  font-size: 0.82rem;
+  color: var(--nb-muted);
+  max-width: 34rem;
+}
+
+.page-state__retry {
+  margin-top: var(--nb-s1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-state__spinner {
+    animation: none;
+  }
+}

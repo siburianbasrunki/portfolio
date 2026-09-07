@@ -1,210 +1,154 @@
-/* About Section */
+/**
+ * Halaman About — potret di kiri, kartu statistik + bio di kanan.
+ */
+
 .about-section {
-  padding: 5rem 0;
-  background: var(--color-bg);
-  position: relative;
+  padding-block: var(--nb-s7);
 }
 
-.section-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.section-header h5 {
-  color: var(--color-light);
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.section-header h2 {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-  font-size: 2rem;
-}
-
-/* About Container */
 .about-container {
   display: grid;
-  grid-template-columns: 35% 50%;
-  gap: 15%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(var(--nb-s5), 5vw, var(--nb-s7));
+  align-items: start;
 }
 
-/* Image Container */
+/* --- Potret --------------------------------------------------------------- */
+
 .about-image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: sticky;
+  top: var(--nb-s5);
 }
 
 .image-wrapper {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1/1;
+  background: var(--nb-blue);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
 }
 
 .profile-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 2rem;
-  position: relative;
-  z-index: 2;
-  filter: grayscale(20%);
-  transition: all 0.5s ease;
 }
 
+/* Elemen dekoratif dari desain lama; tidak lagi dipakai karena bingkai
+   sekarang dibawa oleh border kartu itu sendiri. */
 .image-border {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 2rem;
-  background: linear-gradient(45deg, transparent, var(--color-primary), transparent);
-  transform: rotate(10deg);
-  transition: all 0.5s ease;
-  z-index: 1;
+  display: none;
 }
 
-.about-image-container:hover .image-border {
-  transform: rotate(0deg);
-}
+/* --- Isi ------------------------------------------------------------------ */
 
-.about-image-container:hover .profile-image {
-  filter: grayscale(0%);
-}
-
-/* About Content */
 .about-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  gap: var(--nb-s5);
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--nb-s4);
 }
 
 .stat-card {
-  background: var(--color-bg-variant);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid transparent;
+  display: grid;
+  gap: var(--nb-s1);
+  padding: var(--nb-s4);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh);
+  transition:
+    transform var(--nb-dur) var(--nb-ease),
+    box-shadow var(--nb-dur) var(--nb-ease);
 }
 
 .stat-card:hover {
-  background: transparent;
-  border-color: var(--color-primary-variant);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translate(var(--nb-lift), var(--nb-lift));
+  box-shadow: var(--nb-sh-lg);
 }
+
+/* Tiga kartu memakai tiga blok berbeda supaya terbaca sebagai satu deret,
+   bukan tiga benda yang sama. Urutannya berulang kalau statistik ditambah
+   dari CMS. */
+.stat-card:nth-child(3n + 1) { background: var(--nb-yellow); }
+.stat-card:nth-child(3n + 2) { background: var(--nb-pink); }
+.stat-card:nth-child(3n + 3) { background: var(--nb-blue); }
 
 .stat-icon-container {
   display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
 }
 
 .stat-icon {
-  color: var(--color-primary);
-  font-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--nb-ink);
 }
 
 .stat-value {
-  color: var(--color-white);
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 .stat-title {
-  color: var(--color-primary);
-  font-size: 0.95rem;
-  margin-bottom: 0.5rem;
+  font-family: var(--nb-font-mono);
+  font-size: var(--nb-fs-label);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--nb-track-label);
 }
 
 .stat-description {
-  color: var(--color-light);
-  font-size: 0.7rem;
-  display: block;
+  font-size: 0.78rem;
+  color: var(--nb-ink);
+  opacity: 0.7;
 }
 
 .about-text {
-  color: var(--color-light);
-  line-height: 1.8;
-  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  padding: var(--nb-s5);
+  background: var(--nb-paper);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh);
+  max-width: none;
 }
 
-.greeting {
-  color: var(--color-primary);
-  font-weight: 500;
-  display: inline-block;
-  margin-bottom: 0.5rem;
-}
+/* --- Responsif ------------------------------------------------------------ */
 
-.emoji {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 0.3rem;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 900px) {
   .about-container {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
-  
+
   .about-image-container {
-    width: 50%;
-    margin: 0 auto 3rem;
+    position: static;
+    max-width: 300px;
   }
-  
-  .about-content {
-    text-align: center;
-  }
-  
-  .stats-grid {
-    justify-content: center;
+
+  .image-wrapper {
+    aspect-ratio: 1 / 1;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .about-section {
-    padding: 3rem 0;
+    padding-block: var(--nb-s6);
   }
-  
-  .about-image-container {
-    width: 65%;
-  }
-  
-  .stats-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-}
 
-@media screen and (max-width: 480px) {
-  .about-container {
-    padding: 0 1rem;
-  }
-  
   .about-image-container {
-    width: 80%;
+    max-width: 100%;
   }
-  
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .section-header h2 {
-    font-size: 1.8rem;
+
+  .about-text {
+    padding: var(--nb-s4);
+    font-size: 1rem;
   }
 }

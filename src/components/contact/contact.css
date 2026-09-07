@@ -1,210 +1,281 @@
-/* Contact Section */
+/**
+ * Halaman Contact — dua kolom: kartu kontak di kiri, form di kanan.
+ * Semua nilai berasal dari token (MASTER.md).
+ */
+
 .contact-section {
-  padding: 5rem 0;
-  background: var(--color-bg);
-  text-align: center;
+  padding-block: var(--nb-s7);
 }
 
-.section-header {
-  margin-bottom: 3rem;
-}
-
-.section-header h5 {
-  color: var(--color-light);
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.section-header h2 {
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
-  font-size: 2rem;
-}
-
-/* Contact Container */
 .contact-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: var(--nb-s6);
+  align-items: start;
 }
 
-/* Contact Methods */
+/* --- Kartu metode kontak -------------------------------------------------- */
+
 .contact-methods {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  gap: var(--nb-s4);
 }
 
 .contact-card {
-  background: var(--color-bg-variant);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  gap: var(--nb-s4);
+  padding: var(--nb-s4);
+
+  background: var(--nb-paper);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh);
+
+  transition:
+    transform var(--nb-dur) var(--nb-ease),
+    box-shadow var(--nb-dur) var(--nb-ease);
 }
 
 .contact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translate(var(--nb-lift), var(--nb-lift));
+  box-shadow: var(--nb-sh-lg);
 }
 
 .contact-icon-container {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  /* Warna diisi inline dari data `contactMethods[].color` di CMS. */
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
 }
 
 .contact-icon {
-  font-size: 1.5rem;
-}
-
-.contact-info {
-  flex-grow: 1;
-  text-align: left;
+  width: 1.35rem;
+  height: 1.35rem;
+  /* Ikon selalu hitam, bukan putih — semua warna brand di sistem ini terang
+     dan sudah diverifikasi kontrasnya terhadap tinta hitam. */
+  color: var(--nb-ink);
 }
 
 .contact-info h4 {
-  color: var(--color-white);
-  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .contact-info p {
-  color: var(--color-light);
-  font-size: 0.9rem;
+  font-family: var(--nb-font-mono);
+  font-size: 0.78rem;
+  color: var(--nb-muted);
+  word-break: break-word;
 }
 
 .contact-link {
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+  font-family: var(--nb-font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  padding: var(--nb-s2) var(--nb-s3);
+  background: var(--nb-yellow);
+  border: var(--nb-bd-thin) solid var(--nb-ink);
+  border-radius: var(--nb-r-sm);
+  transition:
+    transform var(--nb-dur) var(--nb-ease),
+    box-shadow var(--nb-dur) var(--nb-ease);
 }
 
 .contact-link:hover {
-  background: var(--color-primary-variant);
+  transform: translate(var(--nb-lift), var(--nb-lift));
+  box-shadow: var(--nb-sh-sm);
 }
 
-/* Contact Form */
+.contact-link:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--nb-sh-none);
+}
+
+/* --- Form ----------------------------------------------------------------- */
+
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  gap: var(--nb-s4);
+  padding: var(--nb-s5);
+  background: var(--nb-well);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh);
 }
 
 .input-group {
   position: relative;
+  display: flex;
+  align-items: flex-start;
 }
 
 .input-icon {
   position: absolute;
-  left: 1rem;
-  top: 1.2rem;
-  color: var(--color-primary);
-  font-size: 1.2rem;
+  top: var(--nb-s3);
+  left: var(--nb-s3);
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--nb-muted);
+  pointer-events: none;
 }
 
-input, textarea {
+.contact-form input,
+.contact-form textarea {
   width: 100%;
-  padding: 1rem 1rem 1rem 3rem;
-  border-radius: 0.5rem;
-  background: var(--color-bg-variant);
-  border: 2px solid var(--color-primary-variant);
-  color: var(--color-white);
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+  padding: var(--nb-s3) var(--nb-s3) var(--nb-s3) var(--nb-s6);
+  font-family: var(--nb-font-mono);
+  font-size: 0.85rem;
+
+  background: var(--nb-paper);
+  color: var(--nb-ink);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh-sm);
+
+  transition: box-shadow var(--nb-dur) var(--nb-ease);
 }
 
-input:focus, textarea:focus {
-  border-color: var(--color-primary);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(77, 181, 255, 0.2);
-}
-
-textarea {
-  min-height: 150px;
+.contact-form textarea {
   resize: vertical;
+  min-height: 8rem;
+  line-height: 1.6;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--nb-muted);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  /* Fokus memperdalam bayangan, bukan menghapus outline. Outline biru dari
+     index.css tetap muncul di atasnya untuk navigasi keyboard. */
+  box-shadow: var(--nb-sh);
 }
 
 .submit-btn {
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  font-weight: 500;
+  gap: var(--nb-s2);
+  width: max-content;
+  padding: var(--nb-s3) var(--nb-s5);
+
+  font-family: var(--nb-font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  background: var(--nb-yellow);
+  color: var(--nb-ink);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh);
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
+
+  transition:
+    transform var(--nb-dur) var(--nb-ease),
+    box-shadow var(--nb-dur) var(--nb-ease),
+    background var(--nb-dur-fast) var(--nb-ease);
 }
 
-.submit-btn:hover {
-  background: var(--color-primary-variant);
-  transform: translateY(-3px);
+.submit-btn:hover:not(:disabled) {
+  transform: translate(var(--nb-lift), var(--nb-lift));
+  box-shadow: var(--nb-sh-lg);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translate(var(--nb-press), var(--nb-press));
+  box-shadow: var(--nb-sh-none);
+}
+
+.submit-btn:disabled {
+  background: var(--nb-well);
+  color: var(--nb-muted);
+  box-shadow: var(--nb-sh-sm);
+  cursor: not-allowed;
 }
 
 .btn-icon {
-  font-size: 1.2rem;
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 1024px) {
-  .contact-container {
-    grid-template-columns: 1fr;
-    max-width: 600px;
-  }
-  
+/* --- Umpan balik form ----------------------------------------------------- */
+
+/* Perangkap bot. Disembunyikan tanpa display:none supaya skrip otomatis
+   tetap "melihat" dan mengisinya. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.field-error {
+  display: block;
+  margin-top: calc(var(--nb-s3) * -1);
+  font-family: var(--nb-font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--nb-ink);
+  background: var(--nb-red);
+  border: var(--nb-bd-thin) solid var(--nb-ink);
+  border-radius: var(--nb-r-sm);
+  padding: 2px var(--nb-s2);
+  width: max-content;
+}
+
+.form-feedback {
+  font-family: var(--nb-font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: var(--nb-s3);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh-sm);
+}
+
+.form-feedback--success {
+  background: var(--nb-tosca);
+}
+
+.form-feedback--error {
+  background: var(--nb-red);
+}
+
+@media screen and (max-width: 600px) {
   .contact-card {
-    padding: 1.2rem;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "icon info"
+      "link link";
+    row-gap: var(--nb-s3);
   }
-}
 
-@media screen and (max-width: 768px) {
-  .contact-section {
-    padding: 3rem 0;
-  }
-  
-  .section-header h2 {
-    font-size: 1.8rem;
-  }
-}
+  .contact-icon-container { grid-area: icon; }
+  .contact-info { grid-area: info; }
 
-@media screen and (max-width: 480px) {
-  .contact-container {
-    padding: 0 1rem;
-  }
-  
-  .contact-card {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-  
-  .contact-info {
+  .contact-link {
+    grid-area: link;
     text-align: center;
   }
-  
-  input, textarea {
-    padding: 1rem 1rem 1rem 2.5rem;
+
+  .contact-form {
+    padding: var(--nb-s4);
   }
-  
-  .input-icon {
-    left: 0.8rem;
-    top: 1rem;
+
+  .submit-btn {
+    width: 100%;
   }
 }

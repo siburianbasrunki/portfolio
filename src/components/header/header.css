@@ -1,87 +1,160 @@
-header {
-  height: 100vh;
-  padding-top: 1rem;
-  overflow: hidden;
+/**
+ * Hero halaman Home. Nama dibiarkan sebesar mungkin dan potret diperlakukan
+ * sebagai blok berbingkai — dua benda besar yang saling mengunci, bukan
+ * tumpukan teks di tengah.
+ */
+
+.hero {
+  padding-block: clamp(var(--nb-s7), 10vh, var(--nb-s9));
 }
 
-.header__container {
-  text-align: center;
-  height: 100%;
-  position: relative;
+.hero__grid {
+  display: grid;
+  gap: clamp(var(--nb-s6), 6vw, var(--nb-s8));
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
 }
 
-/* CTA */
+.hero__text {
+  display: grid;
+  gap: var(--nb-s4);
+  justify-items: start;
+}
+
+.hero__greeting {
+  color: var(--nb-muted);
+}
+
+.hero__name {
+  /* Nama adalah benda terbesar di situs. Tidak ada yang boleh melampauinya. */
+  margin-block: calc(var(--nb-s2) * -1);
+}
+
+.hero__role {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: var(--nb-s2) var(--nb-s3);
+  background: var(--nb-yellow);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh-sm);
+}
+
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nb-s2);
+  font-family: var(--nb-font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--nb-muted);
+}
+
+.hero__dot {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  background: var(--nb-tosca);
+  border: var(--nb-bd-thin) solid var(--nb-ink);
+  border-radius: var(--nb-r-pill);
+}
+
+/* --- CTA ------------------------------------------------------------------ */
 
 .cta {
-  margin-top: 2.5rem;
   display: flex;
-  gap: 1.2rem;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--nb-s3);
 }
 
-/* socialmedia */
+/* --- Sosial media --------------------------------------------------------- */
 
 .header-socials {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-  position: absolute;
-  left: 0;
-  bottom: 3rem;
+  gap: var(--nb-s2);
 }
 
-.header-socials::after {
-  content: "";
-  width: 1px;
-  height: 2rem;
-  background: var(--color-primary);
+.header-socials a {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: var(--nb-paper);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh-sm);
+  transition:
+    transform var(--nb-dur) var(--nb-ease),
+    box-shadow var(--nb-dur) var(--nb-ease),
+    background var(--nb-dur-fast) var(--nb-ease);
 }
 
-/* basrunki */
+.header-socials a svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
 
-.me {
-  background: linear-gradient(var(--color-primary), transparent);
-  width: 22rem;
-  height: 30rem;
-  position: absolute;
-  left: calc(50% - 11rem);
-  margin-top: 4rem;
-  border-radius: 12rem 12rem 0 0;
+.header-socials a:hover {
+  background: var(--nb-blue);
+  transform: translate(var(--nb-lift), var(--nb-lift));
+  box-shadow: var(--nb-sh);
+}
+
+.header-socials a:active {
+  transform: translate(var(--nb-press), var(--nb-press));
+  box-shadow: var(--nb-sh-none);
+}
+
+/* --- Potret --------------------------------------------------------------- */
+
+.hero__portrait {
+  position: relative;
+  background: var(--nb-pink);
+  border: var(--nb-bd) solid var(--nb-ink);
+  border-radius: var(--nb-r);
+  box-shadow: var(--nb-sh-lg);
   overflow: hidden;
-  padding: 5rem 1.5rem 1.5rem 1.5rem ;
-}
-.me img {
-  width: 100%; /* Make the image take the full width of its parent container */
-  height: auto; /* Maintain the image's aspect ratio */
-  margin-top: -8rem;
-}
-/* scrolldown */
-.scroll-down {
-  position: absolute;
-  right: -2.3rem;
-  bottom: 5rem;
-  transform: rotate(90deg);
-  font-weight: 300;
-  font-size: 0.9rem;
+  aspect-ratio: 4 / 5;
 }
 
-/* media queries  (medium devices)*/
-@media screen and (max-width: 1024px) {
-  header {
-    height: 100vh;
-    padding: 25px;
+.hero__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* --- Responsif ------------------------------------------------------------ */
+
+@media screen and (max-width: 900px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--nb-s6);
+  }
+
+  /* Di layar sempit potret pindah ke atas: wajah lebih dulu, baru nama. */
+  .hero__portrait {
+    order: -1;
+    max-width: 320px;
+    aspect-ratio: 1 / 1;
   }
 }
 
-/* media queries  (small devices)*/
 @media screen and (max-width: 600px) {
-  header {
-    height: 100vh;
+  .hero {
+    padding-block: var(--nb-s6);
   }
 
-  .header-socials,
-  .scroll-down {
-    display: none;
+  .hero__portrait {
+    max-width: 100%;
+    box-shadow: var(--nb-sh);
+  }
+
+  .cta .btn {
+    flex: 1 1 auto;
+    justify-content: center;
   }
 }
